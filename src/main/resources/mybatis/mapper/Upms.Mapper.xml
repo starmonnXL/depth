@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.depth.cms.content.dao.UpmsDao">
+
+    <sql id="Base_Column_List_User">
+        ID AS id, USERNAME AS userName, PASSWORD AS passWord, `LEVEL` AS `level`,
+        STATE AS state, SEX AS sex, `NAME` AS `name`, CREATETIME AS createTime,
+        REMARK AS remark, PHONE AS phone, UID AS uid, HEADIMG AS headImg,
+        MODIFYTIME AS modifyTime
+    </sql>
+
+    <sql id="Base_Column_List_Register">
+        ID AS id, PHONE AS phone, PASSWORD AS passWord, STATE AS state, `NAME` AS `name`,
+        UID AS uid, UNAME AS uname, UHEADIMG AS uheadImg, CREATETIME AS createTime,
+        MODIFYTIME AS modifyTime
+    </sql>
+
+    <!-- 新增管理员注册申请数据 -->
+    <insert id="insertUpmsRegister" parameterType="dto">
+        INSERT INTO sm_upms.sm_upms_register(ID,PHONE,PASSWORD,STATE,`NAME`,CREATETIME,MODIFYTIME)
+        values(#{id,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},#{state,jdbcType=SMALLINT},
+        #{name,jdbcType=VARCHAR},#{createTime,jdbcType=BIGINT},#{modifyTime,jdbcType=BIGINT})
+    </insert>
+
+    <!-- 新增管理员信息 -->
+    <insert id="insertUpmsUser" parameterType="dto">
+        INSERT INTO sm_upms.sm_upms_user(ID,USERNAME,PASSWORD,`LEVEL`,STATE,SEX,`NAME`,CREATETIME,REMARK,PHONE,UID,HEADIMG,MODIFYTIME)
+        values(#{id,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{passWord,jdbcType=VARCHAR},#{level,jdbcType=BIT},
+        #{state,jdbcType=BIT},#{sex,jdbcType=BIT},#{name,jdbcType=VARCHAR},#{createTime,jdbcType=BIGINT},
+        #{remark,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR},#{uid,jdbcType=VARCHAR},#{headImg,jdbcType=VARCHAR},
+        #{modifyTime,jdbcType=BIGINT})
+    </insert>
+
+    <!-- 审核修改管理员注册申请状态 -->
+    <update id="updateUpmsRegisterById" parameterType="dto">
+        update  sm_upms.sm_upms_register
+        <set>
+            <if test="state != null">
+                STATE = #{state,jdbcType=SMALLINT},
+            </if>
+            <if test="uid != null and uid != ''">
+                UID = #{uid,jdbcType=VARCHAR},
+            </if>
+            <if test="uname != null and uname != ''">
+                UNAME = #{uname,jdbcType=VARCHAR},
+            </if>
+            <if test="uheadImg != null and uheadImg != ''">
+                UHEADIMG = #{uheadImg,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null">
+                MODIFYTIME = #{modifyTime,jdbcType=BIGINT},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 修改管理员信息 -->
+    <update id="updateUpmsUserById" parameterType="dto"></update>
+
+    <!-- 根据管理员申请唯一标识查询数据 -->
+    <select id="queryUpmsRegisterById" parameterType="dto" resultType="dto">
+        SELECT
+        <include refid="Base_Column_List_Register"/>
+        FROM sm_upms.sm_upms_register
+        WHERE id=#{id}
+    </select>
+    <select id="queryUpmsRegisterByPhone" parameterType="dto" resultType="dto">
+        SELECT
+        <include refid="Base_Column_List_Register"/>
+        FROM sm_upms.sm_upms_register
+        WHERE PHONE=#{phone,jdbcType=VARCHAR}
+    </select>
+    <select id="queryUpmsRegisterByPhoneAndPws" resultType="dto">
+        SELECT
+        <include refid="Base_Column_List_Register"/>
+        FROM sm_upms.sm_upms_register
+        WHERE PHONE=#{phone,jdbcType=VARCHAR} AND PASSWORD=#{passWord,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.depth.cms.content.dao.ArticleDao">
+
+    <resultMap id="BaseResultMap" type="com.depth.cms.content.entity.ArticleEntity">
+        <id column="ID" jdbcType="BIGINT" property="id"/>
+        <result column="CATALOG_ID" jdbcType="BIGINT" property="catalogId"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="TITLE" jdbcType="VARCHAR" property="title"/>
+        <result column="TITLE_COLOR" jdbcType="VARCHAR" property="titleColor"/>
+        <result column="TITLE2" jdbcType="VARCHAR" property="title2"/>
+        <result column="SUMMARY" jdbcType="VARCHAR" property="summary"/>
+        <result column="PAGE_TITLE" jdbcType="VARCHAR" property="pageTitle"/>
+        <result column="PAGE_KEYWORDS" jdbcType="VARCHAR" property="pageKeywords"/>
+        <result column="PAGE_DESCRIPTION" jdbcType="VARCHAR" property="pageDescription"/>
+        <result column="TAGS" jdbcType="VARCHAR" property="tags"/>
+        <result column="PIC_NAME" jdbcType="VARCHAR" property="picName"/>
+        <result column="PIC_ID" jdbcType="BIGINT" property="picId"/>
+        <result column="LINK" jdbcType="VARCHAR" property="link"/>
+        <result column="SOURCE" jdbcType="VARCHAR" property="source"/>
+        <result column="WRITER" jdbcType="VARCHAR" property="writer"/>
+        <result column="NOT_POST" jdbcType="INTEGER" property="notPost"/>
+        <result column="CLICK" jdbcType="INTEGER" property="click"/>
+        <result column="POWER" jdbcType="BIGINT" property="power"/>
+        <result column="PUB_DATE" jdbcType="BIGINT" property="pubDate"/>
+        <result column="NOT_HTML" jdbcType="INTEGER" property="notHtml"/>
+        <result column="FILENAME" jdbcType="VARCHAR" property="filename"/>
+        <result column="FLAGS" jdbcType="VARCHAR" property="flags"/>
+        <result column="SHOWS" jdbcType="VARCHAR" property="shows"/>
+        <result column="POST_COUNT" jdbcType="INTEGER" property="postCount"/>
+        <result column="LAST_POST" jdbcType="BIGINT" property="lastPost"/>
+        <result column="STATUS" jdbcType="INTEGER" property="status"/>
+        <result column="AA01" jdbcType="VARCHAR" property="aa01"/>
+        <result column="AA02" jdbcType="BIGINT" property="aa02"/>
+        <result column="AB01" jdbcType="VARCHAR" property="ab01"/>
+        <result column="AB02" jdbcType="BIGINT" property="ab02"/>
+        <result column="PATH" property="path" jdbcType="VARCHAR"/>
+        <result column="LIKES" property="likes" jdbcType="INTEGER"/>
+        <result column="SHOWHOME" property="showHome" jdbcType="INTEGER"/>
+        <result column="SHOWOPERATION" property="showOperation" jdbcType="INTEGER"/>
+        <result column="TITLE2_COLOR" property="title2Color" jdbcType="VARCHAR"/>
+
+        <result column="dir" property="dir"/>
+    </resultMap>
+
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.depth.cms.content.entity.ArticleEntity">
+        <result column="CONTENT" jdbcType="LONGVARCHAR" property="content"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, CATALOG_ID, NAME, TITLE, TITLE_COLOR, TITLE2, SUMMARY, PAGE_TITLE, PAGE_KEYWORDS,
+        PAGE_DESCRIPTION, TAGS, PIC_NAME, PIC_ID, LINK, SOURCE, WRITER, NOT_POST, CLICK, POWER, PUB_DATE,
+        NOT_HTML, FILENAME, FLAGS, SHOWS, POST_COUNT, LAST_POST, STATUS, AA01, AA02, AB01,
+        AB02,PATH,LIKES,SHOWHOME,SHOWOPERATION,TITLE2_COLOR
+    </sql>
+
+    <sql id="Base_Column_Lists">
+        ID AS id, CATALOG_ID AS catalogId, `NAME` AS `name`, TITLE AS title, TITLE_COLOR AS titleColor,
+        TITLE2 AS title2, SUMMARY AS summary, PAGE_TITLE AS pageTitle, PAGE_KEYWORDS AS pageKeywords,
+        PAGE_DESCRIPTION AS pageDescription, TAGS AS tags, PIC_NAME AS picName, PIC_ID AS picId, LINK AS link,
+        SOURCE AS source, WRITER AS writer, NOT_POST AS notPost, CLICK AS click, POWER AS power, PUB_DATE AS pubDate,
+        NOT_HTML AS notHtml, FILENAME AS filename, FLAGS AS flags, SHOWS AS shows, POST_COUNT AS postCount,
+        LAST_POST AS lastPost, STATUS AS status, AA01 AS aa01, AA02 AS aa02, AB01 AS ab01,
+        AB02 AS ab02,PATH AS path,LIKES AS likes ,SHOWHOME AS showHome,SHOWOPERATION AS showOperation,TITLE2_COLOR AS title2Color
+    </sql>
+
+    <sql id="Blob_Column_List">
+        CONTENT
+    </sql>
+
+    <select id="findById" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+        select
+          a.*,c.DIR AS  dir
+        from sm_cms.sm_cms_article a
+        LEFT JOIN pt_cms_catalog c ON c.id = a.CATALOG_ID
+        where a.ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from sm_cms.sm_cms_article
+        where ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="ID" parameterType="com.depth.cms.content.entity.ArticleEntity">
+        insert into sm_cms.sm_cms_article (ID, CATALOG_ID, NAME,
+        TITLE, TITLE_COLOR, TITLE2,
+        SUMMARY, PAGE_TITLE, PAGE_KEYWORDS,
+        PAGE_DESCRIPTION, TAGS, PIC_NAME, PIC_ID,
+        LINK, SOURCE, WRITER,
+        NOT_POST, CLICK, POWER,
+        PUB_DATE, NOT_HTML, FILENAME,
+        FLAGS, SHOWS, POST_COUNT,
+        LAST_POST, STATUS, AA01,
+        AA02, AB01, AB02, CONTENT,
+        PATH,SHOWHOME,SHOWOPERATION,
+        TITLE2_COLOR
+        )
+        values (#{id,jdbcType=BIGINT}, #{catalogId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+        #{title,jdbcType=VARCHAR}, #{titleColor,jdbcType=VARCHAR}, #{title2,jdbcType=VARCHAR},
+        #{summary,jdbcType=VARCHAR}, #{pageTitle,jdbcType=VARCHAR}, #{pageKeywords,jdbcType=VARCHAR},
+        #{pageDescription,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, #{picName,jdbcType=VARCHAR}, #{picId,jdbcType=BIGINT},
+        #{link,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{writer,jdbcType=VARCHAR},
+        #{notPost,jdbcType=INTEGER}, #{click,jdbcType=INTEGER}, #{power,jdbcType=BIGINT},
+        #{pubDate,jdbcType=BIGINT}, #{notHtml,jdbcType=INTEGER}, #{filename,jdbcType=VARCHAR},
+        #{flags,jdbcType=VARCHAR}, #{shows,jdbcType=VARCHAR}, #{postCount,jdbcType=INTEGER},
+        #{lastPost,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{aa01,jdbcType=VARCHAR},
+        #{aa02,jdbcType=BIGINT}, #{ab01,jdbcType=VARCHAR}, #{ab02,jdbcType=BIGINT},
+        #{content,jdbcType=LONGVARCHAR},#{path},#{showHome,jdbcType=INTEGER},#{showOperation,jdbcType=INTEGER},
+        #{title2Color,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="updateById" parameterType="com.depth.cms.content.entity.ArticleEntity">
+        update sm_cms.sm_cms_article set
+          CATALOG_ID = #{catalogId,jdbcType=BIGINT},
+          NAME = #{name,jdbcType=VARCHAR},
+          TITLE = #{title,jdbcType=VARCHAR},
+          TITLE_COLOR = #{titleColor,jdbcType=VARCHAR},
+          TITLE2 = #{title2,jdbcType=VARCHAR},
+          SUMMARY = #{summary,jdbcType=VARCHAR},
+          PAGE_TITLE = #{pageTitle,jdbcType=VARCHAR},
+          PAGE_KEYWORDS = #{pageKeywords,jdbcType=VARCHAR},
+          PAGE_DESCRIPTION = #{pageDescription,jdbcType=VARCHAR},
+          TAGS = #{tags,jdbcType=VARCHAR},
+          PIC_NAME = #{picName,jdbcType=VARCHAR},
+          PIC_ID = #{picId,jdbcType=BIGINT},
+          LINK = #{link,jdbcType=VARCHAR},
+          SOURCE = #{source,jdbcType=VARCHAR},
+          WRITER = #{writer,jdbcType=VARCHAR},
+          NOT_POST = #{notPost,jdbcType=INTEGER},
+          CLICK = #{click,jdbcType=INTEGER},
+          POWER = #{power,jdbcType=BIGINT},
+          PUB_DATE = #{pubDate,jdbcType=BIGINT},
+          NOT_HTML = #{notHtml,jdbcType=INTEGER},
+          FILENAME = #{filename,jdbcType=VARCHAR},
+          FLAGS = #{flags,jdbcType=VARCHAR},
+          SHOWS = #{shows,jdbcType=VARCHAR},
+          POST_COUNT = #{postCount,jdbcType=INTEGER},
+          LAST_POST = #{lastPost,jdbcType=BIGINT},
+          STATUS = #{status,jdbcType=INTEGER},
+          AA01 = #{aa01,jdbcType=VARCHAR},
+          AA02 = #{aa02,jdbcType=BIGINT},
+          AB01 = #{ab01,jdbcType=VARCHAR},
+          AB02 = #{ab02,jdbcType=BIGINT},
+          CONTENT = #{content,jdbcType=LONGVARCHAR},
+          PATH = #{path},
+          SHOWHOME = #{showHome,jdbcType=INTEGER},
+          SHOWOPERATION = #{showOperation,jdbcType=INTEGER},
+          TITLE2_COLOR = #{title2Color,jdbcType=VARCHAR}
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="findlistPage" parameterType="page" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sm_cms.sm_cms_article WHERE 1=1
+        <if test="dto.cId != null and dto.cId != ''">
+            AND CATALOG_ID = #{dto.cId}
+        </if>
+        <if test="dto.beginDate != null">
+            AND PUB_DATE &gt; #{dto.beginDate}
+        </if>
+        <if test="dto.endDate != null">
+            AND PUB_DATE &lt;= #{dto.endDate}
+        </if>
+        <if test="dto.id != null">
+            AND ID = #{dto.id}
+        </if>
+        <if test="dto.title != null and dto.title !=''">
+            AND TITLE LIKE CONCAT('%',#{dto.title},'%')
+        </if>
+        ORDER BY ID DESC
+    </select>
+
+    <select id="findEnablelistPage" parameterType="page" resultMap="BaseResultMap">
+        SELECT
+            a.ID AS id,
+            a.NAME AS name,
+            a.TITLE AS title,
+            a.TITLE_COLOR AS titleColor,
+            a.CATALOG_ID AS cId,
+            a.PIC_NAME AS picName,
+            a.LINK AS link,
+            a.CLICK AS click,
+            a.PUB_DATE AS pubDate,
+            a.AA02 AS aa02,
+            c.DIR AS dir,
+            a.SHOWHOME AS showHome,
+            a.SHOWOPERATION AS showOperation,
+            a.TITLE2_COLOR AS title2Color
+        FROM
+            sm_cms.sm_cms_article AS a
+        LEFT JOIN pt_cms_catalog c ON a.CATALOG_ID = c.ID
+        WHERE
+            a. STATUS = 1
+        <if test="dto.cId != null">
+            AND a.PATH LIKE CONCAT('%/',#{dto.cId},'/%')
+        </if>
+        ORDER BY a.AA02 DESC
+    </select>
+
+    <delete id="deleteByIds">
+        DELETE FROM sm_cms.sm_cms_article WHERE id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="findEnableLast" resultType="java.util.Map">
+        SELECT
+        a.ID AS id,a.NAME AS name,a.TITLE AS title,a.TITLE_COLOR AS color,a.CATALOG_ID AS cId,a.LINK AS link,a.CLICK AS
+        click,a.PUB_DATE AS pubDate,a.AA02 AS addTime,c.DIR AS dir, a.PIC_NAME AS pic,a.SHOWHOME AS showHome,
+        a.SHOWOPERATION AS showOperation,a.TITLE2_COLOR AS title2Color
+        FROM sm_cms.sm_cms_article AS a LEFT JOIN sm_cms.sm_cms_catalog AS c ON a.CATALOG_ID = c.ID WHERE a.STATUS=1
+        <if test="cId != null">
+            AND a.CATALOG_ID = #{cId,jdbcType=BIGINT}
+        </if>
+        ORDER BY a.PUB_DATE DESC LIMIT #{num}
+    </select>
+
+    <select id="findEnableByFlag" resultType="java.util.Map">
+        SELECT
+        a.ID AS id,a.NAME AS name,a.TITLE AS title,a.TITLE_COLOR AS color,a.CATALOG_ID AS cId,a.LINK AS link,a.CLICK AS
+        click,a.PUB_DATE AS pubDate,a.AA02 AS addTime,c.DIR AS dir,a.PIC_NAME AS pic,a.SUMMARY AS summary,
+        a.SHOWHOME AS showHome,a.SHOWOPERATION AS showOperation,a.TITLE2_COLOR AS title2Color
+        FROM sm_cms.sm_cms_article AS a LEFT JOIN sm_cms.sm_cms_catalog AS c ON a.CATALOG_ID = c.ID WHERE a.STATUS=1
+        <if test="flag != null and flag != ''">
+            AND FIND_IN_SET(#{flag},a.FLAGS)
+        </if>
+        <if test="cId != null">
+            AND a.PATH LIKE CONCAT('%/',#{cId},'/%')
+        </if>
+        ORDER BY a.PUB_DATE DESC LIMIT #{num}
+    </select>
+
+    <select id="findEnableAllByCatalogId" resultMap="BaseResultMap">
+        SELECT
+        a.ID AS id,
+        a.NAME AS name,
+        a.TITLE AS title,
+        a.TITLE_COLOR AS titleColor,
+        a.CATALOG_ID AS cId,
+        a.LINK AS link,
+        a.CLICK AS click,
+        a.PUB_DATE AS pubDate,
+        a.AA02 AS aa02,
+        a.PIC_NAME AS picName,
+        c.DIR AS dir,
+        a.SHOWHOME AS showHome,
+        a.SHOWOPERATION AS showOperation,
+        a.TITLE2_COLOR AS title2Color,
+        a.SUMMARY AS summary,
+        a.PAGE_DESCRIPTION AS pageDescription
+        FROM
+        sm_cms.sm_cms_article AS a
+        LEFT JOIN sm_cms.sm_cms_catalog c ON a.CATALOG_ID = c.ID
+        WHERE
+        a. STATUS = 1
+        <if test="cId != null">
+            AND a.PATH LIKE CONCAT('%/',#{cId},'/%')
+        </if>
+        AND a.SHOWHOME = '0'
+        AND a.SHOWOPERATION = '0'
+        ORDER BY a.AB02 DESC,a.PUB_DATE DESC
+        LIMIT #{num}
+    </select>
+
+    <select id="findHotByCataId" resultMap="BaseResultMap">
+        SELECT
+        a.ID AS id,
+        a.NAME AS name,
+        a.TITLE AS title,
+        a.SUMMARY AS summary,
+        a.CATALOG_ID AS cId,
+        a.LINK AS link,
+        c.DIR AS dir
+        FROM
+        sm_cms.sm_cms_article AS a
+        LEFT JOIN sm_cms.sm_cms_catalog c ON a.CATALOG_ID = c.ID
+        WHERE
+        a. STATUS = 1
+        <if test="cId != null">
+            AND a.PATH LIKE CONCAT('%/',#{cId},'/%')
+        </if>
+        ORDER BY a.CLICK DESC
+        LIMIT #{num}
+    </select>
+
+    <!-- 通过id查找上一条信息 -->
+    <select id="findLastById" resultMap="BaseResultMap">
+        <![CDATA[
+            SELECT
+                a.ID AS id,
+                a.TITLE AS title,
+                a.LINK AS link,
+                c.DIR AS  dir
+            FROM
+                pt_cms_article a
+            LEFT JOIN sm_cms.sm_cms_catalog c ON c.id = a.CATALOG_ID
+            WHERE
+                a.AA02 < (
+                    SELECT
+                        a1.AA02
+                    FROM
+                        pt_cms_article a1
+                    WHERE
+                        a1.id = #{aId}
+                    AND a1.`STATUS` = 1
+                    AND a1.PATH like CONCAT('%/',#{cId},'/%')
+                )
+            AND a.`STATUS` = 1
+            AND a.PATH LIKE CONCAT('%/',#{cId},'/%')
+            ORDER BY
+                a.AA02 DESC
+            LIMIT 1
+		]]>
+    </select>
+
+    <!-- 通过id查找下一条信息 -->
+    <select id="findNextById" resultMap="BaseResultMap">
+        <![CDATA[
+			SELECT
+                a.ID AS id,
+                a.TITLE AS title,
+                 a.LINK AS link,
+                 c.DIR AS  dir
+            FROM
+                sm_cms.sm_cms_article a
+            LEFT JOIN sm_cms.sm_cms_catalog c ON c.id = a.CATALOG_ID
+            WHERE
+                a.AA02 > (
+                    SELECT
+                        a1.AA02
+                    FROM
+                        pt_cms_article a1
+                    WHERE
+                        a1.id = #{aId}
+                    AND a1.`STATUS` = 1
+                    AND a1.PATH like CONCAT('%/',#{cId},'/%')
+                )
+            AND a.`STATUS` = 1
+            AND a.PATH LIKE CONCAT('%/',#{cId},'/%')
+            ORDER BY
+                a.AA02
+            LIMIT 1
+		]]>
+    </select>
+    
+    <update id="addLikesById" parameterType="com.depth.cms.content.entity.ArticleEntity">
+         update pt_cms_article set
+          LIKES = #{likes,jdbcType=INTEGER}
+         where ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <!-- 待实现 -->
+    <update id="updateByIdSelective">
+
+    </update>
+    <update id="updateByIdWithBLOBs">
+
+    </update>
+
+    <select id="appFindlistPage" parameterType="page" resultType="java.util.Map">
+        SELECT
+        CAST(a.ID AS CHAR) AS id,
+        a.`NAME` AS `name`,
+        a.TITLE AS title,
+        a.TITLE2 AS title2,
+        a.SUMMARY AS summary,
+        a.TAGS AS tags,
+        a.PIC_NAME AS picName,
+        a.LINK AS link,
+        a.WRITER AS writer,
+        a.CLICK AS click,
+        a.LIKES AS likes,
+        a.PUB_DATE AS pubDate,
+        a.POST_COUNT AS postCount,
+        c.`NAME` AS catalogName,
+        a.SHOWHOME AS showHome,
+        a.SHOWOPERATION AS showOperation,
+        a.TITLE2_COLOR AS title2Color
+        FROM
+        sm_cms.sm_cms_article a
+        LEFT JOIN sm_cms.sm_cms_catalog c ON a.CATALOG_ID = c.ID
+        WHERE
+        a. STATUS = 1
+        <if test="dto.cId != null and dto.cId != ''">
+            AND a.PATH LIKE CONCAT('%/',#{dto.cId},'/%')
+        </if>
+        <if test="dto.beginDate != null">
+            AND a.PUB_DATE &gt; #{dto.beginDate}
+        </if>
+        <if test="dto.endDate != null">
+            AND a.PUB_DATE &lt;= #{dto.endDate}
+        </if>
+        <if test="dto.title != null and dto.title !=''">
+            AND a.TITLE LIKE CONCAT('%',#{dto.title},'%')
+        </if>
+        ORDER BY a.AA02 DESC
+    </select>
+
+    <select id="getArticle" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+          a.*
+        FROM
+        sm_cms.sm_cms_article a
+        WHERE a.ID = #{id,jdbcType=BIGINT}
+    </select>
+    <!-- 查询（热点，热搜,热点图）文章 -->
+    <select id="findHotSearch" resultType="dto">
+        SELECT
+        <include refid="Base_Column_Lists"/>
+        FROM sm_cms.sm_cms_article AS a
+        WHERE 1=1
+        <if test="indexState != null and indexState != '' ">
+            AND a.SHOWHOME = #{indexState}
+        </if>
+        <if test="showState != null and showState != '' ">
+            AND a.SHOWOPERATION = #{showState}
+        </if>
+        <if test="id != null and id != '' ">
+            AND a.PATH LIKE CONCAT('%/',#{id},'/%')
+        </if>
+        ORDER BY a.AB02 DESC
+    </select>
+    <!-- 根据文章标题模糊匹配文章列表 -->
+    <select id="findListByName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sm_cms.sm_cms_article AS a
+        WHERE 1=1
+        <if test="name != null and name != ''">
+            AND a.NAME LIKE CONCAT('%',#{name},'%')
+        </if>
+        ORDER BY a.AB02 DESC
+    </select>
+    <select id="findSearchByPath" resultType="dto">
+        SELECT
+        <include refid="Base_Column_Lists"/>
+        FROM sm_cms.sm_cms_article AS a
+        WHERE 1=1
+        <if test="path != null and path != ''">
+            AND a.PATH LIKE CONCAT('%/',#{path},'/%')
+        </if>
+        ORDER BY a.AB02 DESC
+        LIMIT #{num}
+    </select>
+    <!-- 根据栏目标识分页查询此栏目下的所有文章 -->
+    <select id="findlistPageByPathOrCatalogId" parameterType="page" resultType="dto">
+        SELECT
+        <include refid="Base_Column_Lists"/>
+        FROM sm_cms.sm_cms_article AS a WHERE 1=1
+        <if test="dto.cId != null and dto.cId != ''">
+            AND a.CATALOG_ID = #{dto.cId}
+        </if>
+        <if test="dto.path != null and dto.path != ''">
+            AND a.PATH LIKE CONCAT('%/',#{dto.path},'/%')
+        </if>
+        <if test="dto.title != null and dto.title !=''">
+            AND a.TITLE LIKE CONCAT('%',#{dto.title},'%')
+        </if>
+        <if test="dto.showOperation != null and dto.showOperation !=''">
+            AND a.SHOWOPERATION = #{dto.showOperation}
+        </if>
+        ORDER BY a.AB02 DESC
+    </select>
+    <select id="findRelevantById" resultMap="BaseResultMap">
+        <![CDATA[
+			SELECT
+                a.ID AS id,
+                a.TITLE AS title,
+                 a.LINK AS link,
+                 c.DIR AS  dir,
+                 a.PIC_NAME AS picName
+            FROM
+                sm_cms.sm_cms_article a
+            LEFT JOIN sm_cms.sm_cms_catalog c ON c.id = a.CATALOG_ID
+            WHERE a.`STATUS` = 1
+            AND a.PATH LIKE CONCAT('%/',#{cId},'/%')
+            AND a.ID != #{aId}
+            ORDER BY RAND()
+            LIMIT 3
+		]]>
+    </select>
+</mapper>

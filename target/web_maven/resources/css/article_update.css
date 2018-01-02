@@ -1,0 +1,80 @@
+/*
+使用在添加文章和修改文章(article目录下add.jsp和edit.jsp)
+zouYing
+2017/1/5
+*/
+#articleTable {
+    font-size: 14px;
+    margin: 10px auto;
+}
+
+#articleTable tr {
+    height: 35px;
+}
+
+#articleTable tr td {
+    padding-right: 5px;
+    border: 1px dotted #808080;
+}
+
+#articleTable .first-td {
+    text-align: right;
+    width: 150px;
+    border-right: none;
+}
+
+#articleTable .second-td {
+    width: 85%;
+    border-left: none;
+}
+
+.input-text {
+    width: 75%;
+}
+
+#cId {
+    width: 220px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.jscolor {
+    width: 60px;
+}
+
+.flags {
+    float: left;
+    margin-left: 10px;
+}
+
+.flags input {
+    width: 17px;
+    height: 17px;
+}
+
+#pic {
+    width: 194px;
+    height: 138px;
+    border: 1px solid #e5e5e5;
+}
+
+.input-text-small {
+    width: 30%;
+}
+
+#articleContent {
+    display: none;
+}
+
+textarea {
+    width: 76.5%;
+    height: 4em;
+}
+
+.contentEditor {
+    margin: 10px auto;
+}
+
+.buttons {
+    text-align: center;
+}

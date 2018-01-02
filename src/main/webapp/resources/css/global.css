@@ -1,0 +1,311 @@
+@CHARSET "UTF-8";
+/*
+*公用，重置easyui样式
+*author:xtt
+*/
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0;}
+html{color:black;font-size:62.5%;}
+body{font:14px/1.5 arial,"微软雅黑";color:#555;outline:0;}
+input,select,textarea{outline-style:none;background:transparent;font-family:"微软雅黑";}
+input,button{border:none medium;outline:none;font-family:"微软雅黑";}
+button, html input[type="button"], input[type="submit"]{cursor:pointer;}
+button[disabled], html input[disabled]{cursor:default;}
+address,caption,cite,code,dfn,em,th,var,i{font-style:normal;font-weight:500;}
+ol,ul,li,dl,dt,dd{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-size:2rem;font-weight:500;}
+sub, sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}
+abbr,acronym{border:none;font-variant:normal;}
+table{border-collapse:collapse;border-spacing:0;}
+img{border:0 none;vertical-align:middle;max-width:100%;}
+caption,th{text-align:left;}
+th{text-align:inherit;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+del{text-decoration:line-through;}
+legend{color:#666;}
+fieldset{border:none;}
+iframe{display:block;}
+q:before,q:after{content:'';}
+ins,a{text-decoration:none;cursor:pointer;color:#666;}
+a:hover{text-decoration:none;}
+/* a:focus,*:focus{outline:none;} */
+
+/*搜索模块*/
+.serch-box {
+	
+}
+.serch-box ul {
+	padding: 10px;
+	pmargin-top: 5px;
+    margin-bottom: 5px;
+    border: dotted 1px #95B8E7;
+    background: white;
+}
+.serch-box li {
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align: middle;
+	margin: 0 10px 5px 0
+}
+.serch-box li>label {
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align: middle;
+}
+.input-style {
+	display: inline-block;
+    /*height: 30px;*/
+    line-height:20px;
+    padding: 4px 6px;
+    font-size: 14px;
+    color: #555555;
+    vertical-align: middle;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+	background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+.tasble-box {
+/* 	height: 80%; */
+/* 	padding: 0 10px; */
+}
+.tasble-box>div {
+	overflow: visible;
+}
+.combobox-item, .combobox-group {
+	cursor: pointer;
+}
+.no-date {
+	text-align: center;
+	line-height: 30px;
+	color: #e00000;
+}
+.look-box {
+	width: 500px;
+	padding: 10px;
+	max-height: 100%;
+	height:100%;
+	overflow: auto;
+}
+.look-box li {
+	margin: 5px 0;
+}
+.size16 {
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	margin-right: 3px;
+}
+.size16+span {
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align: middle;
+	color: #444;
+}
+.define-opr {
+	border:1px solid transparent;
+	line-height: 24px;
+	padding: 0 5px;
+	display: inline-block;
+	*display:inline;
+	*zoom:1;
+	vertical-align: middle;
+}
+.define-opr:hover {
+	background: #eaf2ff;
+  color: #000000;
+  border: 1px solid #b7d2ff;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+/*表单*/
+/*表单：换行样式*/
+.multiline-form {
+	padding: 20px 0;
+}
+.multiline-form>li {
+	display: block;
+	padding: 5px 0;
+}
+.multiline-form label,
+.multiline-form li>input,
+.multiline-form .form-right,
+.multiline-form span.combo {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.multiline-form li>label>em {
+	color: #FF0000;
+}
+.multiline-form li>label {
+	width: 10%;
+	max-width: 200px;
+	line-height: 30px;
+	text-align: right;
+	white-space: nowrap;
+}
+.multiline-form textarea {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+}
+.multiline-form .check-box>label {
+	margin: 0 15px 0 0;
+	line-height: 30px;
+}
+.check-label {
+	overflow: hidden;
+}
+.check-label>input,
+.check-label>label{
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.check-label>input {
+	margin: 0 3px 0 0;
+}
+.check-box,
+.form-right {
+	width: 50%;
+	max-width: 500px;
+}
+.check-box,
+.form-right-more {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	width: 50%;
+}
+.form-right>input {
+	width: 100%;
+    box-sizing: content-box;
+}
+.form-right-more>textarea {
+	width: 100%;
+	max-width: 500px;
+}
+.form-right-long {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	width: 80%;
+}
+.form-right-long>textarea {
+	width: 100%;
+}
+.form-right>input.short-input {
+	width: 120px;
+}
+.upload-file {
+	position: relative;
+	display: block;
+	line-height: 28px;
+	border: 1px #ccc solid;
+	background: #eee;
+	text-align: center;
+	font-size: 12px;
+	width: 100px;
+	overflow: hidden;
+	border-radius: 2px;
+	margin-left: 5px;
+}
+.upload-file>input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	filter:alpha(opacity=0);  
+    -moz-opacity:0;  
+    -khtml-opacity: 0;  
+    opacity: 0;
+    cursor: pointer;
+}
+.remark-tip {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+	position: relative;
+	margin-left: 15px;
+}
+.remark-tip>span {
+	display: block;
+	position: absolute;
+	white-space: nowrap;
+}
+
+/*表单：不换行样式*/
+.line-form {
+	padding: 10px 0 5px;
+}
+.line-form>li {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+	margin: 10px;
+}
+.line-form>li>label {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+}
+.line-form li>label>em {
+	color: #FF0000;
+}
+
+.btn-box {
+	text-align: center;
+}
+
+.update-img {
+	position: absolute;
+    width: 150px;
+    height: 100px;
+    top: 10px;
+    left: 10px;
+}
+.update-img+.line-form {
+	margin-left: 150px;
+}
+.update-file-box {
+	position: relative;
+}
+.preview-box {
+	float: left;
+	min-height: 100px;
+	max-height: 80%;
+	max-width: 80%;
+	min-width: 100px;
+	text-align: center;
+}
+.layui-layer-photos,
+.layui-layer-phimg {
+	min-height: 100px;
+	min-width: 100px;
+}

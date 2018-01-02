@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="depth-web-cms:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="web_maven.war">
+      <element id="artifact" artifact-name="depth-web-cms:war exploded" />
+    </root>
+  </artifact>
+</component>

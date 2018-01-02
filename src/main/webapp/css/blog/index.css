@@ -1,0 +1,326 @@
+@charset "gb2312";
+/* CSS Document */
+body,ul,div,img,h5,h4,h3,h2,h1,p,span,table,figure,i,li{ margin:0; padding:0}
+a:link, a:visited {text-decoration: none; } 
+img{ border:0}
+body{font-size:12px;background:rgb(188, 184, 192);color:#5d5d5d; } 
+.blank{ height:5px; overflow:hidden; width:100%; margin:auto; clear:both}
+.article{width:1030px;margin:0 auto;  overflow:auto; }
+header{ padding:40px 0; width:1000px;  margin:auto; }
+header h1{ font-size:36px; text-shadow:#fff 1px 1px 1px; font-family:'Arizonia', cursive;} /* google 在线字体 Arizonia */
+header h1 a{color:#000;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;}
+header h1 a:hover{ padding-left:20px}
+header p{margin:17px 0 0 0;text-shadow:#000 1px 1px 1px;color:#fff}
+#nav{ width:100%;line-height:40px; height:40px;margin:auto; background:rgba(245,245,245,0.2) }/* nav圆角背景 rgba 透明度0.2 */
+#nav ul{ list-style:none; margin:auto; width:1030px}
+#nav ul li{ float:left; width:100px; text-align:center;text-shadow:#333 1px 1px 1px}
+#nav ul li a{ display:block; color:#FFF; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s;}/* 背景颜色过渡效果 */
+#nav ul li a:hover{ background:#e15782; color: #FFF; font-weight:bold; border-radius:50px 0}
+#nav ul li a#nav_current {background: #e15782;color: #FFF; font-weight:bold; border-radius:50px 0} /* nav高亮显示背景颜色 */
+.content{ width:745px; float:left; }/* left form */
+/*--------推荐文章-------*/
+.topblog{ overflow:hidden; height:256px}
+.topblog h3{  border-bottom:#FFF 1px solid; width:100%;overflow:hidden; font-size:14px; margin:0 0 10px 0; font-family:"微软雅黑"}
+.topblog h3 p{ background:#9ACC99; width:180px; height:25px; margin:15px 0 0 10px; line-height:25px; height:25px; color:#fff; text-align:center; box-shadow: #999 4px 5px 1px;}
+.topblog img{ margin-left:10px; clear:left; float:left}
+.topblog ul{ background: rgba(245,245,245,0.6) url(../../images/blog/libg.png) no-repeat 15px 15px; border:#dddddd 1px solid;list-style-type:none; line-height:26px; float:right; width:414px }
+.topblog ul li{  text-align:center; border-bottom:#FFF 1px solid; border-top:#dddddd 1px solid; font-family:"微软雅黑"; }
+.topblog ul li span{ display:block; font-size:12px; color:#999999; font-weight:normal}
+.topblog ul li a{ color:#ef7000; font-size:20px; font-weight:bold; display:block; height:52px;padding:7px 0;-webkit-transition: all 1s; -moz-transition: all 1s; -o-transition: all 1s;-ms-transition: all 1s;}
+.topblog ul li a:hover{  background:#fff; }
+/* bloglist index */
+.bloglist{ width:99%; margin:20px 5px 20px 5px;clear:both; overflow:hidden; }
+.bloglist h2{line-height:29px; height:26px; font-size:14px; color:#3b3b3b; padding:10px 0 10px 40px;}
+.bloglist h2 a{color:#3b3b3b; display:block;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;-ms-transition: all 0.5s;}
+.bloglist h2 a:hover{cursor:pointer; text-shadow:#fff 1px 1px 1px;padding-left:20px}
+.bloglist ul{ line-height:24px; padding:10px; margin-bottom:20px;border-radius:10px}
+.bloglist ul p{ text-indent:2em}
+.bloglist figure{ text-align:center}
+.dateview{ border:#bebbc0 1px dashed; line-height:24px; height:24px; color:#fff; margin:0 10px}
+.dateview a{color:#000000;}
+.dateview a:hover{ color:#333;}
+.dateview span{ margin:0 10px}
+/* Side Right */
+aside{ width:276px; float:right; overflow:hidden;}
+aside.navsidebar nav{ height:150px; margin-top:20px}  /* 彩色条 */
+aside nav ul{ list-style-type:none; text-align:center;}
+aside nav ul li{ float:left; width:90px; line-height:74px; height:74px; margin-right:2px}
+aside nav ul li.ab{ background:#FF9A66;border-radius:22%;}
+aside nav ul li.sy{ background:#99CC33;border-radius:46%;}
+aside nav ul li.js{ background:#9ACC99;border-radius:50%;}
+aside nav ul li.msh{ background:#9A6601;border-radius:40%;margin-top:2px;}
+aside nav ul li.xc{ background:#FFCC33;border-radius:28%;margin-top:2px;}
+aside nav ul li.ly{ background:#99CDFF;border-radius:34%;margin-top:2px;}
+aside nav ul li a{ display:block; color:#FFF;-webkit-transition: all 1s;-moz-transition: all 1s;-ms-transition: all 1s;-o-transition: all 1s;transition: all 1s; }
+aside nav ul li a:hover{font-weight:bold; color:#FF0;moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg); }
+.slide{margin:5px 0; width:100%}/* 幻灯片 */
+.slide img{  height:200px}
+.vcard{ margin:10px 0; padding:10px} /* 个人简介 google vcard */
+.vcard p{ line-height:25px}
+.vcard p a{ color:#099;text-decoration:underline}
+aside h2{  border-bottom:#FFF 1px solid; width:100%;overflow:hidden; font-size:14px; margin:10px 0; font-family:"微软雅黑"}
+aside h2 p{ background:#1b1b18; width:180px; height:25px; margin:15px 0 0 10px; line-height:25px; height:25px; color:#fff; text-align:center; box-shadow: #999 4px 5px 1px;border-radius: 5px;}
+.news{ padding:10px; list-style:none;background-color: whitesmoke;border-radius: 13px;}
+.news li{ overflow: hidden;white-space: nowrap;text-overflow: ellipsis; background:url(../../images/blog/list.gif) left no-repeat; padding-left:20px}
+.news li a{ color: #666; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s; display:block;line-height:22px; height:22px}
+.news li a:hover{color:#000; padding-left:20px; }
+/* 分享 */
+.share h2{ background:url(../../images/blog/libg.png) 0 -370px no-repeat; height:30px; line-height:30px;border-bottom:#333 2px solid ; overflow:hidden}
+.share p{ margin:10px; clear:both}
+/* footer */
+#copright{ background:#000000;line-height:40px; height:40px; text-align:center; width:100%;color:#fff; font-family:'Arizonia', cursive; font-size:20px}
+#copright a{color:#fff}
+.blog{ color:#FFF; background:rgba(77, 77, 77, 0.2);border-radius: 20px;-moz-border-radius: 20px;-webkit-border-radius: 20px; overflow:hidden; margin:20px 0;opacity:1;}
+.blog h2{ color:#FFF; line-height:40px; height:40px; font-size:32px;font-family:'Arizonia', cursive; padding-left:20px}
+.blog img{ float:left; clear:left; width:30%; border:#FFF 4px solid; margin: 0 20px 10px 10px}
+.blog ul{ padding:10px}
+.blog ul p{ line-height:24px; margin-top:23px}
+.title a{color: #fff;}
+/* bloglist index */
+article{width:1000px; margin:auto; overflow:hidden; }
+/*content*/
+.picshow{width:734px; float:left;margin-top: 20px;margin-left: 10px;}
+.picshow img{-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;opacity:0.8; width:172px;height: 300px;}
+.picshow img:hover{opacity:1;}
+.ac01,.ac02,.ac03{ position:relative; float:left;margin-left: 24px;}
+.ac01{z-index:1}
+.ac02{z-index:0}
+.ac01_text a,.ac02_text a,.ac03_text a{ color:#FFF}
+.ac01_text{ position: absolute; line-height: 54px; width: 118px; height: 54px; left: 153px; top: 0px; background: #5DC0CC; text-align: center; font-family: 'Titillium Web', sans-serif;font-size: 30px;}
+.ac02 img{ margin:100px 0 0 20px;}
+.ac02_text{position: absolute;line-height: 54px;width: 118px;height: 54px;right: 153px;top: 309px;background: #DD0076;text-align: center;font-family: 'Titillium Web', sans-serif;font-size: 30px;}
+.ac03 img{ margin:0 0 0 20px;}
+.ac03_text{ background:#DBD700;position: absolute;text-align: center;font-family: 'Titillium Web', sans-serif;font-size: 30px;width: 118px;height: 54px;line-height: 54px;left:153px; top:100px;}
+.hot{margin-top: 74%;}
+/*canvas {
+    padding:0;
+    margin:0;
+}
+.btnbg {
+    position:absolute;
+    left:16%;
+    top:0;
+	width: 1030px;
+    margin: 0 auto;
+    overflow: hidden;
+}*/
+figure>img{width:30%}
+		#menu {
+			height: 100%;
+			position: fixed;
+			background-color: #ffffff;
+			width: 300px;
+			transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
+			transform: translateX(-100%);
+			left: 60px;
+			opacity:0.5;
+		}
+
+		#menu.expanded {
+			transform: translateX(0%);
+			left: 0px;
+		}
+
+		.menu-inner {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			overflow-y:scroll;
+			
+		}
+
+		#blob {
+			top: 0;
+			z-index: -1;
+			right: 60px;
+			transform: translateX(100%);
+			height: 100%;
+			position: absolute;
+		}
+
+		#blob-path {
+			height: 100%;
+			fill:  #ffffff;
+			opacity:1;
+		}
+
+		.hamburger {
+			right: 20px;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			margin-top: -10px;	
+		}
+
+		.hamburger .line {
+			width: 100%;
+			height: 4px;
+			background-color: #d8d7d7;
+			position: absolute;
+		}
+
+		.hamburger .line:nth-child(2) {
+			top: 50%;
+			margin-top: -2px;
+		}
+
+		.hamburger .line:nth-child(3) {
+			bottom: 0;
+		}
+
+		#menu>h1 {
+			position: fixed;
+			right: 0;
+			margin: 0;
+		}
+
+		.menu-inner>ul {
+			padding: 0;
+			list-style: none;
+			width: 80%;
+			margin-left: 20%;
+			position: absolute;
+			top: 5px;
+			color: #fff;
+			font-family: "iconfont" !important;
+			padding: 20px 0;
+		}
+		.menu-inner>ul>li {
+			color: #000000;
+			font-family: "iconfont" !important;
+			font-size:11px;
+			padding: 18px 0;
+			font-weight:bold;
+		}
+		.menu-inner>ul>li>i {
+			width:32px;
+			font-size:14px;
+		}
+		#menu>h2 {
+			position: absolute;
+		    left: 50%;
+			color: #fff;
+			margin: 0;
+			font-size: 16px;
+			font-family: sans-serif;
+			font-weight: 100;
+		} 
+		.menu-inner>ul>li:hover{
+			cursor:pointer;
+			color: #7738b1;
+			padding-left:10px;
+		}
+		/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+		.menu-inner::-webkit-scrollbar  
+		{  
+			width: 16px;  
+			height: 16px;  
+		}  
+		  
+		/*定义滚动条轨道 内阴影+圆角*/  
+		.menu-inner::-webkit-scrollbar-track  
+		{  
+			-webkit-box-shadow: inset 0 0 0px #ffffff;  
+			border-radius: 10px;    
+		}  
+		  
+		/*定义滑块 内阴影+圆角*/  
+		.menu-inner::-webkit-scrollbar-thumb  
+		{  
+			border-radius: 10px;  
+			-webkit-box-shadow: inset 0 0 6px #ffffff;  
+			background-color: #e9e9e9;  
+		}  
+		
+		.escribe{
+			float:left;
+			width: 60%;
+		}
+		/*翘边阴影*/
+		.box{
+			 position: relative;
+			 box-shadow: 0px 1px 4px rgba(0,0,0,0.3),
+			 0 0 10px rgba(0,0,0,0.1) inset; 
+			 /*添加一个范围=4px的小阴影;再添加一个范围=10px的内阴影;*/
+		}
+		.box:before,.box:after {
+			 content: '';
+			 z-index: -2;
+			 top:50%; bottom:0; left:30px; right:30px;
+			 /*设置四个方向值,然后浏览器自动计算盒子的大小;*/
+			 box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+			 /*设置添加的盒子的阴影;*/
+			 border-radius: 100px/10px;
+			 /*添加圆角:水平方向圆角大小是100px/垂直方向圆角大小是10px;*/
+		}
+		#frame {/*----------图片轮播相框容器----------*/  
+            position: absolute; /*--绝对定位，方便子元素的定位*/  
+            width: 300px;  
+            height: 200px;  
+            overflow: hidden;/*--相框作用，只显示一个图片---*/  
+            border-radius:5px;  
+        }  
+        #dis {/*--绝对定位方便li图片简介的自动分布定位---*/  
+            position: absolute;  
+            opacity: 0.5;  
+        }  
+        #dis li {  
+            display: inline-block;  
+            width: 200px;  
+            height: 20px;  
+            margin: 0 50px;  
+            float: left;  
+            text-align: center;  
+            color: #fff;  
+            border-radius: 10px;  
+            background: #000;  
+        }  
+        #photos img {  
+            float: left;  
+            width:300px;  
+            height:200px;  
+        }  
+        #photos {/*---设置总的图片宽度--通过位移来达到轮播效果----*/  
+            position: absolute;z-index:9px;  
+            width: calc(300px * 5);/*---修改图片数量的话需要修改下面的动画参数*/  
+        }  
+        .play{  
+            animation: ma 20s ease-out infinite alternate;/**/  
+        }  
+        @keyframes ma {/*---每图片切换有两个阶段：位移切换和静置。中间的效果可以任意定制----*/  
+            0%,20% {        margin-left: 0px;       }  
+            25%,40% {       margin-left: -300px;    }  
+            45%,60% {       margin-left: -600px;    }  
+            65%,80% {       margin-left: -900px;    }  
+            85%,100% {      margin-left: -1200px;   }  
+        }  
+        .num{  
+            position:absolute;z-index:10;  
+            display:inline-block;  
+            right:10px;top:174px;  
+            border-radius:100%;  
+            background:#7d7a7e;  
+            width:22px;
+			height:22px;  
+            line-height:22px;  
+            cursor:pointer;  
+            color:#fff;  
+            text-align:center;  
+            opacity:0.8;  
+        }  
+        .num:hover{background:#d09ace;}  
+        .num:hover,#photos:hover{animation-play-state:paused;}  
+        .num:nth-child(2){margin-right:30px}  
+        .num:nth-child(3){margin-right:60px}  
+        .num:nth-child(4){margin-right:90px}  
+        .num:nth-child(5){margin-right:120px}  
+        #a1:hover ~ #photos{animation: ma1 .5s ease-out forwards;}  
+        #a2:hover ~ #photos{animation: ma2 .5s ease-out forwards;}  
+        #a3:hover ~ #photos{animation: ma3 .5s ease-out forwards;}  
+        #a4:hover ~ #photos{animation: ma4 .5s ease-out forwards;}  
+        #a5:hover ~ #photos {animation: ma5 .5s ease-out forwards;}  
+        @keyframes ma1 {0%{margin-left:-1200px;}100%{margin-left:-0px;} }  
+        @keyframes ma2 {0%{margin-left:-1200px;}100%{margin-left:-300px;}   }  
+        @keyframes ma3 {100%{margin-left:-600px;}   }  
+        @keyframes ma4 {100%{margin-left:-900px;}   }  
+        @keyframes ma5 {100%{margin-left:-1200px;}  }

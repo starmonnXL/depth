@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.depth.cms.content.dao.CatalogDao">
+
+    <resultMap id="BaseResultMap" type="com.depth.cms.content.entity.CatalogEntity">
+        <id column="ID" property="id" jdbcType="BIGINT"/>
+        <result column="RE_ID" property="reId" jdbcType="BIGINT"/>
+        <result column="TOP_ID" property="topId" jdbcType="BIGINT"/>
+        <result column="TYPE" property="type" jdbcType="INTEGER"/>
+        <result column="SORT" property="sort" jdbcType="BIGINT"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="DIR" property="dir" jdbcType="VARCHAR"/>
+        <result column="DEFAULT_TYPE" property="defaultType" jdbcType="INTEGER"/>
+        <result column="DEFAULT_NAME" property="defaultName" jdbcType="VARCHAR"/>
+        <result column="PAGE_TITLE" property="pageTitle" jdbcType="VARCHAR"/>
+        <result column="PAGE_KEYWORDS" property="pageKeywords" jdbcType="VARCHAR"/>
+        <result column="PAGE_DESCRIPTION" property="pageDescription" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="INTEGER"/>
+        <result column="AA01" property="aa01" jdbcType="VARCHAR"/>
+        <result column="AA02" property="aa02" jdbcType="BIGINT"/>
+        <result column="AB01" property="ab01" jdbcType="VARCHAR"/>
+        <result column="AB02" property="ab02" jdbcType="BIGINT"/>
+        <result column="PATH" property="path" jdbcType="VARCHAR"/>
+        <result column="ISNAVIGATION" property="isNavigation" jdbcType="BIGINT"/>
+        <result column="ABBREVIATION" property="abbreviation" jdbcType="VARCHAR"/>
+        <result column="SERVICENAME" property="serviceName" jdbcType="VARCHAR"/>
+        <result column="FUNCTIONNAME" property="functionName" jdbcType="INTEGER"/>
+        <result column="JUMPURL" property="jumpUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.depth.cms.content.entity.CatalogEntity" extends="BaseResultMap">
+        <result column="CONTENT" property="content" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, RE_ID, TOP_ID, TYPE, SORT, NAME, DIR, DEFAULT_TYPE, DEFAULT_NAME, PAGE_TITLE, PAGE_KEYWORDS,
+        PAGE_DESCRIPTION, STATUS, AA01, AA02, AB01, AB02,PATH,ISNAVIGATION,ABBREVIATION,SERVICENAME,FUNCTIONNAME,
+        JUMPURL
+    </sql>
+    <sql id="Base_Column_Lists">
+        ID AS id, RE_ID AS reId, TOP_ID AS topId, TYPE AS `type`, SORT AS sort, NAME AS `name`, DIR AS dir,
+         DEFAULT_TYPE AS defaultType, DEFAULT_NAME AS defaultName, PAGE_TITLE AS pageTitle, PAGE_KEYWORDS AS pageKeywords,
+        PAGE_DESCRIPTION AS pageDescription, STATUS AS status, AA01 AS aa01, AA02 AS aa02, AB01 AS ab01,
+        AB02 AS aa02,PATH AS path,ISNAVIGATION AS isNavigation,ABBREVIATION AS abbreviation,SERVICENAME AS serviceName,
+        FUNCTIONNAME AS functionName,JUMPURL AS jumpUrl
+    </sql>
+    <sql id="Blob_Column_List">
+        CONTENT
+    </sql>
+    <select id="findById" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from  sm_cms.sm_cms_catalog
+        where ID = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="findByName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from  sm_cms.sm_cms_catalog
+        where NAME = #{name,jdbcType=BIGINT} LIMIT 1
+    </select>
+    <delete id="deleteById" parameterType="java.lang.Long">
+        delete from  sm_cms.sm_cms_catalog
+        where ID = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.depth.cms.content.entity.CatalogEntity">
+        insert into  sm_cms.sm_cms_catalog (ID, RE_ID, TOP_ID, TYPE,
+        SORT, NAME, DIR, DEFAULT_TYPE,
+        DEFAULT_NAME, PAGE_TITLE, PAGE_KEYWORDS,
+        PAGE_DESCRIPTION, STATUS, AA01,
+        AA02, AB01, AB02, CONTENT,PATH,ISNAVIGATION,ABBREVIATION,
+        SERVICENAME,FUNCTIONNAME,JUMPURL
+        )
+        values (#{id,jdbcType=BIGINT}, #{reId,jdbcType=BIGINT}, #{topId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER},
+        #{sort,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{dir,jdbcType=VARCHAR}, #{defaultType,jdbcType=INTEGER},
+        #{defaultName,jdbcType=VARCHAR}, #{pageTitle,jdbcType=VARCHAR}, #{pageKeywords,jdbcType=VARCHAR},
+        #{pageDescription,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{aa01,jdbcType=VARCHAR},
+        #{aa02,jdbcType=BIGINT}, #{ab01,jdbcType=VARCHAR}, #{ab02,jdbcType=BIGINT}, #{content,jdbcType=LONGVARCHAR},
+        #{path},#{isNavigation},#{abbreviation,jdbcType=VARCHAR},#{serviceName,jdbcType=VARCHAR},
+        #{functionName,jdbcType=INTEGER},#{jumpUrl,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.depth.cms.content.entity.CatalogEntity">
+        insert into  sm_cms.sm_cms_catalog
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="reId != null">
+                RE_ID,
+            </if>
+            <if test="topId != null">
+                TOP_ID,
+            </if>
+            <if test="type != null">
+                TYPE,
+            </if>
+            <if test="sort != null">
+                SORT,
+            </if>
+            <if test="name != null">
+                NAME,
+            </if>
+            <if test="dir != null">
+                DIR,
+            </if>
+            <if test="defaultType != null">
+                DEFAULT_TYPE,
+            </if>
+            <if test="defaultName != null">
+                DEFAULT_NAME,
+            </if>
+            <if test="pageTitle != null">
+                PAGE_TITLE,
+            </if>
+            <if test="pageKeywords != null">
+                PAGE_KEYWORDS,
+            </if>
+            <if test="pageDescription != null">
+                PAGE_DESCRIPTION,
+            </if>
+            <if test="status != null">
+                STATUS,
+            </if>
+            <if test="aa01 != null">
+                AA01,
+            </if>
+            <if test="aa02 != null">
+                AA02,
+            </if>
+            <if test="ab01 != null">
+                AB01,
+            </if>
+            <if test="ab02 != null">
+                AB02,
+            </if>
+            <if test="content != null">
+                CONTENT,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="reId != null">
+                #{reId,jdbcType=BIGINT},
+            </if>
+            <if test="topId != null">
+                #{topId,jdbcType=BIGINT},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="dir != null">
+                #{dir,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultType != null">
+                #{defaultType,jdbcType=INTEGER},
+            </if>
+            <if test="defaultName != null">
+                #{defaultName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageTitle != null">
+                #{pageTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="pageKeywords != null">
+                #{pageKeywords,jdbcType=VARCHAR},
+            </if>
+            <if test="pageDescription != null">
+                #{pageDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="aa01 != null">
+                #{aa01,jdbcType=VARCHAR},
+            </if>
+            <if test="aa02 != null">
+                #{aa02,jdbcType=BIGINT},
+            </if>
+            <if test="ab01 != null">
+                #{ab01,jdbcType=VARCHAR},
+            </if>
+            <if test="ab02 != null">
+                #{ab02,jdbcType=BIGINT},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByIdSelective" parameterType="com.depth.cms.content.entity.CatalogEntity">
+        update  sm_cms.sm_cms_catalog
+        <set>
+            <if test="reId != null">
+                RE_ID = #{reId,jdbcType=BIGINT},
+            </if>
+            <if test="topId != null">
+                TOP_ID = #{topId,jdbcType=BIGINT},
+            </if>
+            <if test="sort != null">
+                SORT = #{sort,jdbcType=BIGINT},
+            </if>
+            <if test="name != null">
+                NAME = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="dir != null">
+                DIR = #{dir,jdbcType=VARCHAR},
+            </if>
+            <if test="defaultType != null">
+                DEFAULT_TYPE = #{defaultType,jdbcType=INTEGER},
+            </if>
+            <if test="defaultName != null">
+                DEFAULT_NAME = #{defaultName,jdbcType=VARCHAR},
+            </if>
+            <if test="pageTitle != null">
+                PAGE_TITLE = #{pageTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="pageKeywords != null">
+                PAGE_KEYWORDS = #{pageKeywords,jdbcType=VARCHAR},
+            </if>
+            <if test="pageDescription != null">
+                PAGE_DESCRIPTION = #{pageDescription,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                STATUS = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="aa01 != null">
+                AA01 = #{aa01,jdbcType=VARCHAR},
+            </if>
+            <if test="aa02 != null">
+                AA02 = #{aa02,jdbcType=BIGINT},
+            </if>
+            <if test="ab01 != null">
+                AB01 = #{ab01,jdbcType=VARCHAR},
+            </if>
+            <if test="ab02 != null">
+                AB02 = #{ab02,jdbcType=BIGINT},
+            </if>
+            <if test="content != null">
+                CONTENT = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByIdWithBLOBs" parameterType="com.depth.cms.content.entity.CatalogEntity">
+        update  sm_cms.sm_cms_catalog
+        set RE_ID = #{reId,jdbcType=BIGINT},
+        TYPE = #{type,jdbcType=BIGINT},
+        TOP_ID = #{topId,jdbcType=BIGINT},
+        SORT = #{sort,jdbcType=BIGINT},
+        NAME = #{name,jdbcType=VARCHAR},
+        DIR = #{dir,jdbcType=VARCHAR},
+        DEFAULT_TYPE = #{defaultType,jdbcType=INTEGER},
+        DEFAULT_NAME = #{defaultName,jdbcType=VARCHAR},
+        PAGE_TITLE = #{pageTitle,jdbcType=VARCHAR},
+        PAGE_KEYWORDS = #{pageKeywords,jdbcType=VARCHAR},
+        PAGE_DESCRIPTION = #{pageDescription,jdbcType=VARCHAR},
+        STATUS = #{status,jdbcType=INTEGER},
+        AA01 = #{aa01,jdbcType=VARCHAR},
+        AA02 = #{aa02,jdbcType=BIGINT},
+        AB01 = #{ab01,jdbcType=VARCHAR},
+        AB02 = #{ab02,jdbcType=BIGINT},
+        CONTENT = #{content,jdbcType=LONGVARCHAR},
+        PATH = #{path},
+        ISNAVIGATION = #{isNavigation},
+        ABBREVIATION = #{abbreviation},
+        SERVICENAME = #{serviceName},
+        FUNCTIONNAME = #{functionName},
+        JUMPURL = #{jumpUrl}
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateById" parameterType="com.depth.cms.content.entity.CatalogEntity">
+        update  sm_cms.sm_cms_catalog
+        set RE_ID = #{reId,jdbcType=BIGINT},
+        TOP_ID = #{topId,jdbcType=BIGINT},
+        TYPE = #{type,jdbcType=BIGINT},
+        SORT = #{sort,jdbcType=BIGINT},
+        NAME = #{name,jdbcType=VARCHAR},
+        DIR = #{dir,jdbcType=VARCHAR},
+        DEFAULT_TYPE = #{defaultType,jdbcType=INTEGER},
+        DEFAULT_NAME = #{defaultName,jdbcType=VARCHAR},
+        PAGE_TITLE = #{pageTitle,jdbcType=VARCHAR},
+        PAGE_KEYWORDS = #{pageKeywords,jdbcType=VARCHAR},
+        PAGE_DESCRIPTION = #{pageDescription,jdbcType=VARCHAR},
+        STATUS = #{status,jdbcType=INTEGER},
+        AA01 = #{aa01,jdbcType=VARCHAR},
+        AA02 = #{aa02,jdbcType=BIGINT},
+        AB01 = #{ab01,jdbcType=VARCHAR},
+        AB02 = #{ab02,jdbcType=BIGINT},
+        PATH = #{path},
+        ISNAVIGATION = #{isNavigation}
+        where ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM  sm_cms.sm_cms_catalog
+    </select>
+
+    <select id="findAllCatalog" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM  sm_cms.sm_cms_catalog cms WHERE cms.TYPE = 0
+    </select>
+
+    <select id="findWithTree" resultType="java.util.Map">
+        SELECT ID AS id, RE_ID AS pid, NAME AS name, STATUS AS status, TYPE as type FROM  sm_cms.sm_cms_catalog
+    </select>
+
+    <select id="findTop" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM  sm_cms.sm_cms_catalog WHERE RE_ID = 0 AND ISNAVIGATION = 1
+    </select>
+
+    <select id="findSub" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM  sm_cms.sm_cms_catalog WHERE RE_ID = #{id} AND STATUS = '1' ORDER BY SORT DESC,AB02 DESC
+    </select>
+
+    <select id="countSub" resultType="long">
+        SELECT COUNT(ID) FROM  sm_cms.sm_cms_catalog WHERE RE_ID = #{id} AND STATUS = 1 LIMIT 1
+    </select>
+
+    <select id="countArticle" resultType="long">
+        SELECT COUNT(ID) FROM  sm_cms.sm_cms_article WHERE CATALOG_ID = #{id} AND (STATUS = 1 OR STATUS = 0) LIMIT 1
+    </select>
+
+    <select id="findByDir" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        FROM  sm_cms.sm_cms_catalog WHERE STATUS = 1 AND DIR = #{dir} AND STATUS = '1' LIMIT 1
+    </select>
+    <!-- 查询所有业态 -->
+    <select id="findOperation" resultType="dto">
+        SELECT a.ID AS id,a.ABBREVIATION AS abbreviation,a.`NAME` AS `name`,a.DIR AS dir,a.SERVICENAME AS serviceName,a.FUNCTIONNAME AS functionName,a.JUMPURL AS jumpUrl FROM sm_cms.sm_cms_catalog AS a WHERE a.TOP_ID = '0' AND a.ISNAVIGATION = '3' AND a.STATUS = '1' ORDER BY a.SORT DESC,a.AB02 DESC
+    </select>
+    <!-- 根据业态唯一标识查询返回栏目name包含百科的栏目标识下的所有栏目 -->
+    <select id="findEncyclopedias" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sm_cms.sm_cms_catalog AS a
+        WHERE a.RE_ID = (
+          SELECT ca.ID FROM  sm_cms.sm_cms_catalog AS ca WHERE ca.RE_ID = #{id}  AND ca.STATUS = '1' AND ca.NAME LIKE CONCAT('%百科%'))  AND a.STATUS = '1' ORDER BY a.SORT DESC,a.AB02 DESC
+    </select>
+    <!-- 根据首页或者业态首页查询新闻或咨询栏目 -->
+    <select id="findCatalogEntityByState" resultType="dto">
+        SELECT
+        <include refid="Base_Column_Lists"/>
+        FROM  sm_cms.sm_cms_catalog AS a
+        WHERE a.DEFAULT_TYPE = #{defaultType,jdbcType=INTEGER}
+        <if test="id != null and id != ''">
+            AND a.TOP_ID = #{id}
+        </if>
+        AND a.ISNAVIGATION = '2'
+        AND a.STATUS = '1'
+    </select>
+    <select id="findBySub" resultType="dto">
+        SELECT
+        <include refid="Base_Column_Lists"/>
+        FROM  sm_cms.sm_cms_catalog
+        WHERE RE_ID = #{id}
+        <if test="isNavigation != null and isNavigation != ''">
+            AND ISNAVIGATION != #{isNavigation}
+        </if>
+        AND STATUS = '1'
+        ORDER BY SORT DESC,AB02 DESC
+    </select>
+
+</mapper>

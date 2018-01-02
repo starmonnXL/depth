@@ -1,0 +1,244 @@
+
+
+html,body {
+	font-size:100% ;
+	width:100%;
+	height:100%;
+	line-height:normal;
+	word-wrap:break-word;
+	word-break:break-all;
+	font-family: arial,宋体,sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+.div_titlebold{
+	margin-top:10px;
+	margin-bottom:10px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+.div_sendUser{
+	float:right;
+	margin-right: 20px;
+	color: #666666
+}
+
+/* zTree拓展样式 */
+
+/*展开 合并 箭头作为图标*/
+.ztree li span.button.mypoint_ico_open{
+	margin-right:2px;
+	background: url(../js/zTree/zTreeStyle/img/diy/blue_expanded.png) no-repeat scroll 0 0 transparent;
+	vertical-align:top;
+	*vertical-align:middle
+}
+.ztree li span.button.mypoint_ico_close{
+	margin-right:2px;
+	background: url(../js/zTree/zTreeStyle/img/diy/blue_right.png) no-repeat scroll 0 0 transparent;
+	vertical-align:top;
+	*vertical-align:middle
+}
+/*展开 合并 作为图标*/
+.ztree li span.button.folder_ico_open{
+	margin-right:2px;
+	background:url(../js/zTree/zTreeStyle/img/zTreeStandard.png) no-repeat scroll -110px -16px transparent;
+	*background:url(../js/zTree/zTreeStyle/img/zTreeStandard.gif) no-repeat scroll -110px -16px transparent;
+	*vertical-align:middle;
+}
+.ztree li span.button.folder_ico_close{
+	margin-right:2px;
+	background:url(../js/zTree/zTreeStyle/img/zTreeStandard.png) no-repeat scroll -110px 0 transparent;
+	*background:url(../js/zTree/zTreeStyle/img/zTreeStandard.gif) no-repeat scroll -110px 0 transparent;
+	vertical-align:top;
+	*vertical-align:middle;
+}
+.ztree li span.button.folder_ico_docu{
+	margin-right:2px;
+	background:url(../js/zTree/zTreeStyle/img/zTreeStandard.png) no-repeat scroll -110px -16px transparent;
+	*background:url(../js/zTree/zTreeStyle/img/zTreeStandard.gif) no-repeat scroll -110px -16px transparent;
+	vertical-align:top;
+	*vertical-align:middle;
+}
+
+
+div.editor{
+	border: none;
+}
+
+/* 流程表单样式   */
+table.flowtable{
+	width: 700px;
+	border-collapse:collapse;
+	margin: 10px auto 10px;
+	border: 1px solid black;
+	height: auto;
+}
+table.flowtable caption{
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px;
+}
+table.flowtable th{
+	border: 1px solid black;
+	padding: 10px;
+	font-weight: bold;
+	text-align:center;
+}
+table.flowtable td{
+	border: 1px solid black;
+	padding: 8px;
+}
+
+table.flowtable textarea{
+	width: 90%;
+	height: 30px;
+}
+table.flowtable input{
+	border-color: #878787;
+	border-style: solid;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-left: 0px;
+	border-bottom-width: 1px;
+	border-radius: 0px;
+	box-shadow:none;
+}
+table.flowtable input[type='text']{width: 150px;}
+input[type="radio"], input[type="checkbox"]{margin: 0px;}
+.btnDel{
+	background:url(../images/small/Delete_16x16.png) no-repeat;
+	display:block;
+	width:22px;
+	height:20px;
+	margin-top: 1px;
+	margin-left: 2px;
+
+}
+.btnDelete{
+	background:url(../images/small/Delete_16x16.png) no-repeat;
+	display:inline-block;
+	width:22px;
+	height:20px;
+	margin-top: 1px;
+	margin-left: 2px;
+
+}
+
+.ul-menu{
+	margin: 1px 0 0;
+	padding:0;
+	list-style: none outside none;
+}
+
+li .ul-submenu{
+	display:none;
+	margin: 0 0 0 20px;
+	padding:0;
+	list-style: none outside none;
+
+}
+
+.ul-menu>li>a , .ul-submenu>li>a{
+	border: 1px solid #95B8E7;
+	display: block;
+	margin: 0 0 -1px;
+	padding: 5px 10px;
+	background-color:#f9f9f9;
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+
+}
+
+i.f-right{
+	float: right;
+	margin-right: -6px;
+	margin-top: 2px;
+	opacity: 0.25;
+}
+
+.boot_icon-chevron-down {
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    line-height: 16px;
+    vertical-align: text-top;
+    background-image: url(../images/accordion_arrows.png);
+    background-repeat: no-repeat;
+}
+
+.boot_icon-chevron-down {
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    line-height: 16px;
+    vertical-align: text-top;
+    background-image: url(../images/accordion_arrows.png);
+    background-repeat: no-repeat;
+}
+
+.boot_icon-chevron-right {
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    line-height: 16px;
+    vertical-align: text-top;
+	background: url(../images/accordion_arrows.png) no-repeat -16px 0;
+	background-repeat: no-repeat;
+}
+
+.zhaopin{width: 100px}
+
+/**处理列表页面按钮位置**/
+.search-toolbar .span-left {
+	float: left;
+}
+.search-toolbar .span-right {
+	float: right;
+}
+
+/**处理ztree下划线和图标管理**/
+.ztree li a {
+	text-decoration: none !important;
+}
+.mybtn-add {
+	background: url(../js/easyui-1.3.5/themes/icons/edit_add.png) no-repeat center center !important;
+}
+.mybtn-update {
+	background: url(../js/easyui-1.3.5/themes/icons/pencil.png) no-repeat center center !important;
+}
+.mybtn-remove {
+	background: url(../js/easyui-1.3.5/themes/icons/edit_remove.png) no-repeat center center !important;
+}
+/**ztree左键菜单样式**/
+.ztreeRight {
+	position:absolute; 
+	visibility:hidden; 
+	top:0; 
+	padding: 2px;
+	z-index: 999;
+	background-color: #fafafa;
+    border:1px #ddd solid;
+    color: #444;
+    box-shadow:0 0 4px 1px rgba(0,0,0,.1)
+}
+.ztreeRight ul {
+	margin: 0;
+}
+.ztreeRight ul li{
+	position:relative;
+	margin: 1px 0;
+	padding:0 5px 0 25px;
+	cursor: pointer;
+	list-style: none outside none;
+  		font-size:12px;
+}
+.ztreeRight ul li:hover {
+	background: #eee;
+}

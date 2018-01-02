@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.depth.cms.content.dao.CommentDao">
+    <resultMap id="BaseResultMap" type="com.depth.cms.content.entity.CommentEntity">
+        <id column="ID" property="id" javaType="java.lang.Long" />
+        <result column="ARTICLE_ID" property="articleId" javaType="java.lang.Long" />
+        <result column="CONTENT" property="content" javaType="java.lang.String" />
+        <result column="STATE" property="state" javaType="java.lang.Integer" />
+        <result column="REPORT" property="report" javaType="java.lang.Integer" />
+        <result column="LIKES" property="likes" javaType="java.lang.Integer" />
+        <result column="AA01" property="aa01" javaType="java.lang.Long" />
+        <result column="AA02" property="aa02" javaType="java.lang.Long" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, ARTICLE_ID, CONTENT, STATE, REPORT, LIKES, AA01, AA02
+    </sql>
+
+
+    <insert id="insert" parameterType="com.depth.cms.content.entity.CommentEntity">
+        INSERT INTO
+          pt_cms_comment(ID, ARTICLE_ID, CONTENT, STATE, REPORT, LIKES, AA01, AA02)
+        VALUES
+          (#{id,jdbcType=BIGINT}, #{articleId,jdbcType=BIGINT}, #{content,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER},
+           #{report,jdbcType=INTEGER}, #{likes,jdbcType=INTEGER}, #{aa01,jdbcType=BIGINT}, #{aa02,jdbcType=BIGINT})
+    </insert>
+
+    <update id="update" parameterType="com.depth.cms.content.entity.CommentEntity">
+        UPDATE pt_cms_comment SET
+          ARTICLE_ID = #{articleId,jdbcType=BIGINT},
+          CONTENT = #{content,jdbcType=VARCHAR},
+          STATE = #{state,jdbcType=INTEGER},
+          REPORT = #{report,jdbcType=INTEGER},
+          LIKES = #{likes,jdbcType=INTEGER},
+          AA01 = #{aa01,jdbcType=BIGINT},
+          AA02 = #{aa02,jdbcType=BIGINT}
+        WHERE ID = #{id,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM pt_cms_comment WHERE ID = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <select id="getById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT pcc.* FROM pt_cms_comment pcc WHERE pcc.ID = #{id,jdbcType=BIGINT}
+    </select>
+
+    <select id="findlistPage" parameterType="page" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        pt_cms_comment
+        WHERE 1=1
+        <if test="dto.aId != null">
+          AND ARTICLE_ID = #{dto.aId}
+        </if>
+        <if test="dto.state != null">
+            AND STATE = #{dto.state}
+        </if>
+        <if test="dto.beginDate != null">
+            AND AA02 &gt;= #{dto.beginDate}
+        </if>
+        <if test="dto.endDate != null">
+            AND AA02 &lt;= #{dto.endDate}
+        </if>
+        <if test="dto.commentatorId != null">
+            AND AA01 = #{dto.commentatorId}
+        </if>
+        ORDER BY ID DESC
+    </select>
+
+    <select id="findNormallistPage" parameterType="page" resultType="java.util.Map">
+        SELECT
+        ct.ID AS id,
+        ct.ARTICLE_ID AS articleId,
+        ct.CONTENT AS content,
+        ct.REPORT AS report,
+        ct.LIKES AS likes,
+        ct.AA01 AS aa01,
+        ct.AA02 AS aa02
+        FROM
+        pt_cms_comment ct
+        WHERE
+        ct.STATE = 1
+        <if test="dto.aId != null">
+            AND ct.ARTICLE_ID = #{dto.aId}
+        </if>
+        <if test="dto.beginDate != null">
+            AND ct.AA02 &gt;= #{dto.beginDate}
+        </if>
+        <if test="dto.endDate != null">
+            AND ct.AA02 &lt;= #{dto.endDate}
+        </if>
+        <if test="dto.commentatorId != null">
+            AND ct.AA01 = #{dto.commentatorId}
+        </if>
+        ORDER BY ct.AA02 DESC
+    </select>
+
+    <select id="searchNormallistPage" parameterType="page" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        pt_cms_comment
+        WHERE STATE = 1
+        <if test="dto.aId != null">
+            AND ARTICLE_ID = #{dto.aId}
+        </if>
+        <if test="dto.beginDate != null">
+            AND AA02 &gt;= #{dto.beginDate}
+        </if>
+        <if test="dto.endDate != null">
+            AND AA02 &lt;= #{dto.endDate}
+        </if>
+        <if test="dto.commentatorId != null">
+            AND AA01 = #{dto.commentatorId}
+        </if>
+        ORDER BY ID DESC
+    </select>
+
+    <select id="findReportlistPage" parameterType="page" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM
+        pt_cms_comment
+        WHERE
+        STATE = 1 AND REPORT &gt; 0
+        <if test="dto.aId != null">
+            AND ARTICLE_ID = #{dto.aId}
+        </if>
+        <if test="dto.beginDate != null">
+            AND AA02 &gt;= #{dto.beginDate}
+        </if>
+        <if test="dto.endDate != null">
+            AND AA02 &lt;= #{dto.endDate}
+        </if>
+        <if test="dto.commentatorId != null">
+            AND AA01 = #{dto.commentatorId}
+        </if>
+        ORDER BY ID DESC
+    </select>
+
+    <select id="countCommentByAid" parameterType="java.lang.Long" resultType="java.lang.Integer">
+        SELECT
+	    COUNT(ct.ID)
+        FROM
+	    pt_cms_comment ct
+        WHERE
+	    ct.STATE = 1
+	    <if test="aId != null">
+            AND ct.ARTICLE_ID = #{aId,jdbcType=BIGINT}
+        </if>
+    </select>
+    
+</mapper>
